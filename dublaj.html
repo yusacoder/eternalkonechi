@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dublajlarımız | Konechiba Senpai</title>
+<meta name="description" content="Konechiba Senpai ve Eternal Production tarafından hazırlanan Türkçe anime dublaj projelerinin tam listesi.">
+
+<meta name="theme-color" content="#ff3333">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div id="loading-screen" class="loading-screen">
+  <div class="loading-mark" aria-hidden="true"></div>
+</div>
+
+<div id="app-shell">
+
+  <header class="navbar">
+    <div class="navbar-left">
+      <button id="hamburger-btn" class="hamburger-btn" aria-label="Menüyü aç" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="brand">Konechiba <span>Senpai</span></div>
+    </div>
+    <div class="navbar-right">
+      <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Temayı değiştir">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
+      </button>
+    </div>
+  </header>
+
+  <div id="side-overlay" class="side-overlay"></div>
+  <nav id="side-menu" class="side-menu" aria-label="Ana menü">
+    <div class="side-menu-header">
+      <div class="brand">Konechiba <span>Senpai</span></div>
+      <button id="side-menu-close" class="side-menu-close" aria-label="Menüyü kapat">✕</button>
+    </div>
+    <div class="side-menu-section">
+      <p class="side-menu-title">Menü</p>
+      <a href="index.html" class="side-menu-link"><span class="icon">🏠</span> Ana Sayfa</a>
+      <a href="dublaj.html" class="side-menu-link active"><span class="icon">🎬</span> Dublajlarımız</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <div class="page-header">
+      <p class="page-eyebrow"></p>
+      <h1 class="page-title">Dublajlarımız</h1>
+      <p class="page-sub">Türkçe seslendirdiğimiz anime projelerinin tamamı.</p>
+    </div>
+
+    <section id="dub-grid" class="dub-grid" aria-label="Dublaj projeleri">
+      <!-- JS ile dublaj.js'den otomatik oluşturulur -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © 2026 Konechiba Senpai | Eternal Production<br>
+    Made with <span>❤</span> for the Anime Community.
+  </footer>
+</div>
+
+<div id="toast-stack" class="toast-stack"></div>
+
+<script src="common.js"></script>
+<script src="dublaj.js"></script>
+</body>
+</html>
