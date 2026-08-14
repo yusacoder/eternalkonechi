@@ -6,14 +6,20 @@
   "use strict";
 
   /* ---------- Loading screen ---------- */
-  window.addEventListener("load", function () {
+  function hideLoader() {
     var loader = document.getElementById("loading-screen");
     if (loader) {
       setTimeout(function () {
         loader.classList.add("is-hidden");
       }, 250);
     }
-  });
+  }
+
+  if (document.readyState === "complete") {
+    hideLoader();
+  } else {
+    window.addEventListener("load", hideLoader);
+  }
 
   /* ---------- Hamburger / side menu ---------- */
   var hamburgerBtn = document.getElementById("hamburger-btn");
