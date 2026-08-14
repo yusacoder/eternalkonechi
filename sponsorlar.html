@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Dublajlarımız | Konechiba Senpai</title>
-<meta name="description" content="Konechiba Senpai ve Eternal Production tarafından hazırlanan Türkçe anime dublaj projelerinin tam listesi.">
+<title>Sponsorlar | Konechiba Senpai</title>
+<meta name="description" content="Konechiba Senpai projesini destekleyen değerli sponsorlarımız ve ortaklarımız.">
 
 <meta name="theme-color" content="#ff3333">
 
@@ -19,6 +19,7 @@
 
 <div id="app-shell">
 
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="navbar-left">
       <button id="hamburger-btn" class="hamburger-btn" aria-label="Menüyü aç" aria-expanded="false">
@@ -33,6 +34,7 @@
     </div>
   </header>
 
+  <!-- SIDE MENU -->
   <div id="side-overlay" class="side-overlay"></div>
   <nav id="side-menu" class="side-menu" aria-label="Ana menü">
     <div class="side-menu-header">
@@ -42,32 +44,39 @@
     <div class="side-menu-section">
       <p class="side-menu-title">Menü</p>
       <a href="index.html" class="side-menu-link"><span class="icon">🏠</span> Ana Sayfa</a>
-      <a href="dublaj.html" class="side-menu-link active"><span class="icon">🎬</span> Dublajlarımız</a>
-      <a href="sponsorlar.html" class="side-menu-link"><span class="icon">🤝</span> Sponsorlar</a>
+      <a href="dublaj.html" class="side-menu-link"><span class="icon">🎬</span> Dublajlarımız</a>
+      <a href="sponsorlar.html" class="side-menu-link active"><span class="icon">🤝</span> Sponsorlar</a>
     </div>
   </nav>
 
+  <!-- MAIN -->
   <main class="page-content">
     <div class="page-header">
-      <p class="page-eyebrow"></p>
-      <h1 class="page-title">Dublajlarımız</h1>
-      <p class="page-sub">Türkçe seslendirdiğimiz anime projelerinin tamamı.</p>
+      <p class="page-eyebrow">DESTEKÇİLERİMİZ</p>
+      <h1 class="page-title">Sponsorlarımız</h1>
+      <p class="page-sub">Projemize ve içeriklerimize katkıda bulunan değerli sponsorlarımız.</p>
     </div>
 
-    <section id="dub-grid" class="dub-grid" aria-label="Dublaj projeleri">
-      <!-- JS ile dublaj.js'den otomatik oluşturulur -->
+    <section id="sponsor-grid" class="sponsor-grid" aria-label="Sponsor kartları">
+      <!-- JS ile sponsor.js'den otomatik oluşturulur -->
     </section>
   </main>
 
   <footer class="site-footer">
-    © 2026 Konechiba Senpai | Eternal Production<br>
-    Made with <span>❤</span> for the Anime Community.
+    <p>© 2026 Konechiba Senpai. All Rights Reserved.</p>
+    <p>
+      Powered by
+      <a href="https://www.eternalproduction.net" target="_blank" rel="noopener noreferrer">
+        Eternal Production
+      </a>
+    </p>
+    <p>Made with <span>❤</span> for the Anime Community.</p>
   </footer>
 </div>
 
 <div id="toast-stack" class="toast-stack"></div>
 
 <script src="js/common.js"></script>
-<script src="js/dublaj.js"></script>
+<script src="js/sponsor.js"></script>
 </body>
 </html>
