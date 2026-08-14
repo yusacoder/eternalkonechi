@@ -1,8 +1,14 @@
 [
   {
     "name": "Eternal Production",
-    "logo": "https://photograph.eternalproduction.net/konechiba-senpai-logo.jpg",
-    "description": "Konechiba Senpai ve dublaj projelerimizin ana sponsoru ve yapımcı ekibi.",
+    "logo": "https://photograph.eternalproduction.net/eternal-logo.jpg",
+    "description": "Konechiba Senpai'nin bağlı olduğu yetenek ajansı.",
     "url": "https://www.eternalproduction.net"
+  },
+  {
+    "name": "Animezer",
+    "logo": "https://pbs.twimg.com/media/Gu6FqDDWgAAhx8z.jpg",
+    "description": "Animezer & ücretsiz 4k anime izle!",
+    "url": "https://animezer.com/"
   }
 ]
