@@ -11,14 +11,27 @@
       title: "High School DxD Türkçe Dublaj",
       description: "Hyoudou Issei, sıradan bir lise öğrencisiyken hayatı beklenmedik bir şekilde değişir ve şeytanlar dünyasına adım atar. Rias Gremory'nin hizmetkârı olarak yeni hayatına başlayan Issei'nin macerası burada başlıyor.",
       cover: "https://static.zerochan.net/Highschool.DxD.HERO.full.2281993.jpg",
-      siteLogo: "",
+      siteLogo: "https://animezer.com/icon.png?5d728f7f68b60a2e",
       siteName: "AnimeZer",
       url: "https://animezer.com/anime/high-school-dxd/sezon-1/bolum-1",
       episode: "01 / 12",
       quality: "1080p Türkçe Dublaj",
       date: "25.07.2026",
       team: "KoneHub Dublaj"
+    },
+         {
+      title: "High School DxD Türkçe Dublaj",
+      description: "Hyoudou Issei, sıradan bir lise öğrencisiyken hayatı beklenmedik bir şekilde değişir ve şeytanlar dünyasına adım atar. Rias Gremory'nin hizmetkârı olarak yeni hayatına başlayan Issei'nin macerası burada başlıyor.",
+      cover: "https://static.zerochan.net/Highschool.DxD.HERO.full.2281993.jpg",
+      siteLogo: "https://anihub.com.tr/icon.png",
+      siteName: "AniHub",
+      url: "https://anihub.com.tr/high-school-dxd-izle-1-bolum-izle",
+      episode: "01 / 12",
+      quality: "1080p Türkçe Dublaj",
+      date: "14.08.2026",
+      team: "KoneHub Dublaj"
     }
+     
   ];
 
   function renderDubs() {
