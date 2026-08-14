@@ -10,5 +10,17 @@
     "logo": "https://pbs.twimg.com/media/Gu6FqDDWgAAhx8z.jpg",
     "description": "Animezer & ücretsiz 4k anime izle!",
     "url": "https://animezer.com/"
+  },
+    {
+    "name": "Zylorium",
+    "logo": "https://cdn.myikas.com/images/theme-images/8efac5c9-e5ed-47e0-a642-ef6defac8ea9/image_180.webp",
+    "description": "Anime kaplamalı oyuncu ekipmanları.",
+    "url": "https://zylorium.com.tr/"
+  },
+    {
+    "name": "Rebelx",
+    "logo": "https://rebelx.com.tr/uploads/favicon-1786369036504.png",
+    "description": "Rebelx ile oyuncu koltuklarının keyfine var!",
+    "url": "https://rebelx.com.tr/"
   }
 ]
