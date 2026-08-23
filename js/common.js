@@ -118,4 +118,25 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   };
+
+  /* ---------- Toast helper (global) ---------- */
+  window.showToast = function (message, type) {
+    var stack = document.getElementById("toast-stack");
+    if (!stack) return;
+
+    var toast = document.createElement("div");
+    toast.className = "toast" + (type ? " " + type : "");
+    toast.innerHTML = '<span style="margin-right:8px; font-size:1.1rem;"><i class="fa-solid fa-circle-check" style="color:#1d9bf0;"></i></span> ' + window.escapeHtml(message);
+
+    stack.appendChild(toast);
+
+    setTimeout(function () {
+      toast.style.opacity = "0";
+      toast.style.transform = "translateY(10px)";
+      toast.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      setTimeout(function () {
+        if (toast.parentElement) toast.parentElement.removeChild(toast);
+      }, 300);
+    }, 3500);
+  };
 })();

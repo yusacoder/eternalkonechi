@@ -78,8 +78,26 @@
     var logo = window.withPlaceholder(DATA.logo, "");
 
     if (nameEl) {
-      nameEl.textContent = name;
+      var verifiedText = "Bu kullanıcı Eternal Yetenek Ajansı tarafından doğrulanmıştır.";
+      nameEl.innerHTML =
+        '<span>' + window.escapeHtml(name) + '</span> ' +
+        '<span class="verified-badge" id="verified-badge" tabindex="0" role="button" aria-label="' + window.escapeHtml(verifiedText) + '">' +
+          '<i class="fa-solid fa-circle-check"></i>' +
+          '<span class="badge-tooltip">' + window.escapeHtml(verifiedText) + '</span>' +
+        '</span>';
+
       document.title = name;
+
+      var badgeEl = document.getElementById("verified-badge");
+      if (badgeEl) {
+        badgeEl.addEventListener("click", function (e) {
+          e.stopPropagation();
+          badgeEl.classList.toggle("active");
+          if (window.showToast) {
+            window.showToast(verifiedText, "success");
+          }
+        });
+      }
     }
     if (bioEl) bioEl.textContent = bio;
     if (logoEl) {
