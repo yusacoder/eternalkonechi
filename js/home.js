@@ -17,6 +17,8 @@
       { name: "Instagram", username: "Konehub Instagram", url: "https://www.instagram.com/konehub_", icon: "instagram" },
       { name: "Instagram", username: "Konecistan Instagram", url: "https://www.instagram.com/konecistan", icon: "instagram" },
       { name: "Instagram", username: "Konezaki Instagram", url: "https://www.instagram.com/konezakisenpai", icon: "instagram" },
+      { name: "Instagram", username: "Tsuki Senpai Instagram", url: "https://www.instagram.com/tsuki.__.senpai", icon: "instagram" },
+      { name: "WhatsApp", username: "DxD sticker arşivi wp", url: "https://whatsapp.com/channel/0029VbDcR6mIN9iugkEYZo1Y", icon: "whatsapp" },
       { name: "TikTok", username: "Konechiba Senpai TikTok", url: "https://www.tiktok.com/@_konechiba._.senpai_", icon: "tiktok" },
       { name: "TikTok", username: "Ohayo Senpai TikTok", url: "https://www.tiktok.com/@ohayo._.senpai", icon: "tiktok" },
       { name: "YouTube", username: "Konechiba Senpai YouTube", url: "https://youtube.com/konechiba-senpai", icon: "youtube" },
