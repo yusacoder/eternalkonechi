@@ -39,19 +39,32 @@
               quality: "1080p Türkçe Dublaj",
               date: "14.08.2026",
               team: "KoneHub Dublaj"
+            },
+                {
+              title: "High School DxD 1. Bölüm (Animim)",
+              description: "Hyoudou Issei, sıradan bir lise öğrencisiyken hayatı beklenmedik bir şekilde değişir ve şeytanlar dünyasına adım atar. Rias Gremory'nin hizmetkârı olarak yeni hayatına başlayan Issei'nin macerası burada başlıyor.",
+              cover: "https://static.zerochan.net/Highschool.DxD.HERO.full.2281993.jpg",
+              siteLogo: "https://play-lh.googleusercontent.com/Ph0HtI57-oDxq897RYMu1X7jzlqBktAAFTdOA3ouRimYf2QAobiaILdV3VtJVAr53plWJ31669De-2kRICuEfw=s0-br30",
+              siteName: "Animim",
+              url: "https://animim.app/izle/6abe5f1b43dadacbb1c63e6b/1/1",
+              episode: "01 / 12",
+              quality: "1080p Türkçe Dublaj",
+              date: "06.10.2026",
+              team: "KoneHub Dublaj"
             }
+            
           ]
         },
         {
           seasonNumber: 2,
-          seasonTitle: "Sezon 2 (New)",
+          seasonTitle: "Sezon 2",
           episodes: [
             /* Sezon 2 gelecekteki bölümler için hazır hazne */
           ]
         },
         {
           seasonNumber: 3,
-          seasonTitle: "Sezon 3 (BorN)",
+          seasonTitle: "Sezon 3",
           episodes: [
             /* Sezon 3 gelecekteki bölümler için hazır hazne */
           ]
