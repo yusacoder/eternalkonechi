@@ -50,12 +50,21 @@
 
   <main class="page-content">
     <div class="page-header">
-      <p class="page-eyebrow"></p>
+      <p class="page-eyebrow">DİZİ & SEZON BÖLÜMLERİ</p>
       <h1 class="page-title">Dublajlarımız</h1>
       <p class="page-sub">Türkçe seslendirdiğimiz anime projelerinin tamamı.</p>
     </div>
 
-    <section id="dub-grid" class="dub-grid" aria-label="Dublaj projeleri">
+    <!-- Dublaj Arama Çubuğu -->
+    <div class="search-container">
+      <div class="search-box glass-card">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="dub-search" class="search-input" placeholder="Anime, sezon, bölüm veya platform ara..." aria-label="Dublaj arama">
+        <button id="search-clear" class="search-clear-btn" aria-label="Aramayı temizle" style="display:none;">✕</button>
+      </div>
+    </div>
+
+    <section id="dub-container" class="dub-container" aria-label="Dublaj projeleri ve sezonlar">
       <!-- JS ile dublaj.js'den otomatik oluşturulur -->
     </section>
   </main>

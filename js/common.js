@@ -139,4 +139,59 @@
       }, 300);
     }, 3500);
   };
+
+  /* ---------- Bakım Modu (Maintenance Mode) ---------- */
+  function checkMaintenanceMode() {
+    var paths = ["bakim.json", "data/bakim.json", "../bakim.json", "../data/bakim.json"];
+
+    function tryPath(idx) {
+      if (idx >= paths.length) return;
+      fetch(paths[idx])
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          if (data && (data.active === true || data.active === "true")) {
+            renderMaintenanceOverlay(data);
+          }
+        })
+        .catch(function () {
+          tryPath(idx + 1);
+        });
+    }
+
+    tryPath(0);
+  }
+
+  function renderMaintenanceOverlay(data) {
+    var title = data.title || "Sitemiz Bakımdadır";
+    var message = data.message || "Sizlere daha iyi bir deneyim sunabilmek için bakım çalışması yapıyoruz.";
+    var estimated = data.estimated_time || "";
+    var contact = data.contact_info || "";
+
+    var appShell = document.getElementById("app-shell");
+    if (appShell) {
+      appShell.style.display = "none";
+    }
+
+    var overlay = document.createElement("div");
+    overlay.id = "maintenance-screen";
+    overlay.className = "maintenance-screen";
+
+    overlay.innerHTML =
+      '<div class="maintenance-card glass-card">' +
+        '<div class="maintenance-icon-wrapper">' +
+          '<i class="fa-solid fa-gears maintenance-gear"></i>' +
+        '</div>' +
+        '<h1 class="maintenance-title">' + window.escapeHtml(title) + '</h1>' +
+        '<p class="maintenance-message">' + window.escapeHtml(message) + '</p>' +
+        (estimated ? '<div class="maintenance-badge"><i class="fa-solid fa-clock"></i> ' + window.escapeHtml(estimated) + '</div>' : '') +
+        (contact ? '<div class="maintenance-contact"><a href="mailto:' + window.escapeHtml(contact) + '" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> ' + window.escapeHtml(contact) + '</a></div>' : '') +
+      '</div>';
+
+    document.body.appendChild(overlay);
+  }
+
+  checkMaintenanceMode();
 })();
