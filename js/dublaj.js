@@ -71,7 +71,7 @@
         },
         {
           seasonNumber: 4,
-          seasonTitle: "Sezon 4 (Hero)",
+          seasonTitle: "Sezon 4",
           episodes: [
             /* Sezon 4 gelecekteki bölümler için hazır hazne */
           ]
