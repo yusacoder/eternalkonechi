@@ -1,5 +1,5 @@
 /* ==========================================================================
-   dublaj.js — Dublajlarımız sayfası: Sezon hazneleri (accordions) ve arama
+   dublaj.js — Dublajlarımız sayfası: Sezon ve Bölüm hazneleri (accordions) ve arama
    ========================================================================== */
 
 (function () {
@@ -17,42 +17,40 @@
           seasonTitle: "Sezon 1",
           episodes: [
             {
-              title: "High School DxD 1. Bölüm (AnimeZer)",
+              episodeNumber: 1,
+              title: "1. Bölüm",
               description: "Hyoudou Issei, sıradan bir lise öğrencisiyken hayatı beklenmedik bir şekilde değişir ve şeytanlar dünyasına adım atar. Rias Gremory'nin hizmetkârı olarak yeni hayatına başlayan Issei'nin macerası burada başlıyor.",
               cover: "https://static.zerochan.net/Highschool.DxD.HERO.full.2281993.jpg",
-              siteLogo: "https://animezer.com/icon.png?5d728f7f68b60a2e",
-              siteName: "AnimeZer",
-              url: "https://animezer.com/anime/high-school-dxd/sezon-1/bolum-1",
-              episode: "01 / 12",
-              quality: "1080p Türkçe Dublaj",
+              episodeCode: "01 / 12",
               date: "25.07.2026",
-              team: "KoneHub Dublaj"
-            },
-            {
-              title: "High School DxD 1. Bölüm (AniHub)",
-              description: "Hyoudou Issei, sıradan bir lise öğrencisiyken hayatı beklenmedik bir şekilde değişir ve şeytanlar dünyasına adım atar. Rias Gremory'nin hizmetkârı olarak yeni hayatına başlayan Issei'nin macerası burada başlıyor.",
-              cover: "https://static.zerochan.net/Highschool.DxD.HERO.full.2281993.jpg",
-              siteLogo: "https://anihub.com.tr/icon.png",
-              siteName: "AniHub",
-              url: "https://anihub.com.tr/high-school-dxd-izle-1-bolum-izle",
-              episode: "01 / 12",
-              quality: "1080p Türkçe Dublaj",
-              date: "14.08.2026",
-              team: "KoneHub Dublaj"
-            },
+              team: "KoneHub Dublaj",
+              sites: [
                 {
-              title: "High School DxD 1. Bölüm (Animim)",
-              description: "Hyoudou Issei, sıradan bir lise öğrencisiyken hayatı beklenmedik bir şekilde değişir ve şeytanlar dünyasına adım atar. Rias Gremory'nin hizmetkârı olarak yeni hayatına başlayan Issei'nin macerası burada başlıyor.",
-              cover: "https://static.zerochan.net/Highschool.DxD.HERO.full.2281993.jpg",
-              siteLogo: "https://play-lh.googleusercontent.com/Ph0HtI57-oDxq897RYMu1X7jzlqBktAAFTdOA3ouRimYf2QAobiaILdV3VtJVAr53plWJ31669De-2kRICuEfw=s0-br30",
-              siteName: "Animim",
-              url: "https://animim.app/izle/6abe5f1b43dadacbb1c63e6b/1/1",
-              episode: "01 / 12",
-              quality: "1080p Türkçe Dublaj",
-              date: "06.10.2026",
-              team: "KoneHub Dublaj"
+                  siteName: "AnimeZer",
+                  siteLogo: "https://animezer.com/icon.png?5d728f7f68b60a2e",
+                  url: "https://animezer.com/anime/high-school-dxd/sezon-1/bolum-1",
+                  quality: "1080p Türkçe Dublaj",
+                  date: "25.07.2026",
+                  team: "KoneHub Dublaj"
+                },
+                {
+                  siteName: "AniHub",
+                  siteLogo: "https://anihub.com.tr/icon.png",
+                  url: "https://anihub.com.tr/high-school-dxd-izle-1-bolum-izle",
+                  quality: "1080p Türkçe Dublaj",
+                  date: "14.08.2026",
+                  team: "KoneHub Dublaj"
+                },
+                {
+                  siteName: "Animim",
+                  siteLogo: "https://play-lh.googleusercontent.com/Ph0HtI57-oDxq897RYMu1X7jzlqBktAAFTdOA3ouRimYf2QAobiaILdV3VtJVAr53plWJ31669De-2kRICuEfw=s0-br30",
+                  url: "https://animim.app/izle/6abe5f1b43dadacbb1c63e6b/1/1",
+                  quality: "1080p Türkçe Dublaj",
+                  date: "06.10.2026",
+                  team: "KoneHub Dublaj"
+                }
+              ]
             }
-            
           ]
         },
         {
@@ -80,8 +78,9 @@
     }
   ];
 
-  // Açık olan sezonların durumunu saklar (varsayılan: 0. anime - 0. sezon açık)
+  // Açık olan sezon ve bölüm durumlarını saklar
   var openSeasons = { "0-0": true };
+  var openEpisodes = { "0-0-0": true };
   var currentSearchQuery = "";
 
   function toggleSeason(animeIndex, seasonIndex) {
@@ -90,23 +89,47 @@
     renderDubs();
   }
 
-  function matchesQuery(item, query) {
+  function toggleEpisode(animeIndex, seasonIndex, epIndex) {
+    var key = animeIndex + "-" + seasonIndex + "-" + epIndex;
+    openEpisodes[key] = !openEpisodes[key];
+    renderDubs();
+  }
+
+  function matchesQuery(ep, animeTitle, seasonTitle, query) {
     if (!query) return true;
     var q = query.toLowerCase().trim();
-    var fields = [
-      item.title,
-      item.description,
-      item.siteName,
-      item.quality,
-      item.team,
-      item.episode,
-      item.date
+
+    if (animeTitle && animeTitle.toLowerCase().indexOf(q) !== -1) return true;
+    if (seasonTitle && seasonTitle.toLowerCase().indexOf(q) !== -1) return true;
+
+    var epFields = [
+      ep.title,
+      ep.description,
+      ep.episodeCode,
+      ep.date,
+      ep.team
     ];
-    for (var i = 0; i < fields.length; i++) {
-      if (fields[i] && String(fields[i]).toLowerCase().indexOf(q) !== -1) {
+
+    for (var i = 0; i < epFields.length; i++) {
+      if (epFields[i] && String(epFields[i]).toLowerCase().indexOf(q) !== -1) {
         return true;
       }
     }
+
+    if (ep.sites && ep.sites.length > 0) {
+      for (var j = 0; j < ep.sites.length; j++) {
+        var site = ep.sites[j];
+        if (
+          (site.siteName && site.siteName.toLowerCase().indexOf(q) !== -1) ||
+          (site.quality && site.quality.toLowerCase().indexOf(q) !== -1) ||
+          (site.team && site.team.toLowerCase().indexOf(q) !== -1) ||
+          (site.date && site.date.toLowerCase().indexOf(q) !== -1)
+        ) {
+          return true;
+        }
+      }
+    }
+
     return false;
   }
 
@@ -128,13 +151,11 @@
         // Bölüm filtreleme
         var filteredEpisodes = season.episodes.filter(function (ep) {
           if (!isSearching) return true;
-          return matchesQuery(ep, query) ||
-                 (season.seasonTitle && season.seasonTitle.toLowerCase().indexOf(query) !== -1) ||
-                 (animeTitle && animeTitle.toLowerCase().indexOf(query) !== -1);
+          return matchesQuery(ep, animeTitle, season.seasonTitle, query);
         });
 
         // Arama yapılıyorsa ve bu sezonda eşleşme varsa hazneyi otomatik aç
-        var isOpen = isSearching ? (filteredEpisodes.length > 0) : !!openSeasons[seasonKey];
+        var isSeasonOpen = isSearching ? (filteredEpisodes.length > 0) : !!openSeasons[seasonKey];
 
         if (filteredEpisodes.length > 0 || !isSearching) {
           hasAnyContent = true;
@@ -148,40 +169,87 @@
         if (filteredEpisodes.length === 0) {
           episodesListHtml = '<p class="placeholder-note small">Bu sezona henüz bölüm eklenmedi.</p>';
         } else {
-          episodesListHtml = filteredEpisodes.map(function (dub, epIdx) {
-            var title = window.withPlaceholder(dub.title, "İsimsiz Bölüm");
-            var description = window.withPlaceholder(dub.description, "");
-            var cover = window.withPlaceholder(dub.cover || anime.cover, "");
-            var siteLogo = window.withPlaceholder(dub.siteLogo, "");
-            var siteName = window.withPlaceholder(dub.siteName, "");
-            var episode = window.withPlaceholder(dub.episode, "-");
-            var quality = window.withPlaceholder(dub.quality, "-");
-            var date = window.withPlaceholder(dub.date, "-");
-            var team = window.withPlaceholder(dub.team, "Eternal Production");
-            var url = dub.url;
-            var validUrl = window.isValidUrl(url);
+          episodesListHtml = filteredEpisodes.map(function (ep, epIdx) {
+            var epKey = aIdx + "-" + sIdx + "-" + epIdx;
+            var isEpOpen = isSearching ? true : !!openEpisodes[epKey];
+
+            var title = window.withPlaceholder(ep.title, "Bölüm " + (epIdx + 1));
+            var description = window.withPlaceholder(ep.description, "");
+            var cover = window.withPlaceholder(ep.cover || anime.cover, "");
+            var episodeCode = window.withPlaceholder(ep.episodeCode, "-");
+            var epDate = window.withPlaceholder(ep.date, "-");
+            var epTeam = window.withPlaceholder(ep.team, "Eternal Production");
+            var sites = ep.sites || [];
+
+            var sitesHtml = "";
+            if (sites.length === 0) {
+              sitesHtml = '<p class="placeholder-note small">Bu bölüm için izleme seçeneği henüz eklenmedi.</p>';
+            } else {
+              sitesHtml = sites.map(function (site) {
+                var siteName = window.withPlaceholder(site.siteName, "Platform");
+                var siteLogo = window.withPlaceholder(site.siteLogo, "");
+                var quality = window.withPlaceholder(site.quality, "1080p Dublaj");
+                var date = window.withPlaceholder(site.date || epDate, "-");
+                var team = window.withPlaceholder(site.team || epTeam, "KoneHub Dublaj");
+                var url = site.url;
+                var validUrl = window.isValidUrl(url);
+
+                return (
+                  '<a class="site-card-item glass-card' + (!validUrl ? ' disabled' : '') + '" ' +
+                    (validUrl ? 'href="' + url + '" target="_blank" rel="noopener noreferrer"' : 'aria-disabled="true"') + '>' +
+                    '<div class="site-card-left">' +
+                      '<div class="site-logo-wrapper">' +
+                        (siteLogo ? '<img class="site-logo-img" src="' + siteLogo + '" alt="' + window.escapeHtml(siteName) + '" loading="lazy" onerror="this.nextElementSibling.style.display=\'flex\'; this.style.display=\'none\';">' : '') +
+                        '<div class="site-logo-fallback" ' + (siteLogo ? 'style="display:none;"' : '') + '><i class="fa-solid fa-play"></i></div>' +
+                      '</div>' +
+                      '<div class="site-info-group">' +
+                        '<div class="site-name-row">' +
+                          '<span class="site-name-title">' + window.escapeHtml(siteName) + '</span>' +
+                          '<span class="site-badge quality">' + window.escapeHtml(quality) + '</span>' +
+                        '</div>' +
+                        '<div class="site-meta-sub">' +
+                          '<span class="site-sub-item"><i class="fa-solid fa-users"></i> ' + window.escapeHtml(team) + '</span>' +
+                          '<span class="site-sub-item"><i class="fa-regular fa-calendar"></i> ' + window.escapeHtml(date) + '</span>' +
+                        '</div>' +
+                      '</div>' +
+                    '</div>' +
+                    '<div class="site-card-right">' +
+                      (validUrl
+                        ? '<span class="site-watch-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> İzle</span>'
+                        : '<span class="site-watch-btn disabled">Yakında</span>') +
+                    '</div>' +
+                  '</a>'
+                );
+              }).join("");
+            }
 
             return (
-              '<article class="dub-card glass-card">' +
-                (cover ? '<img class="dub-cover" src="' + cover + '" alt="' + window.escapeHtml(title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
-                '<div class="dub-body">' +
-                  (siteLogo || siteName ? (
-                    '<div class="dub-site-row">' +
-                      (siteLogo ? '<img class="dub-site-logo" src="' + siteLogo + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
-                      (siteName ? '<span class="dub-site-name">' + window.escapeHtml(siteName) + '</span>' : '') +
-                    '</div>'
-                  ) : '') +
-                  '<h3 class="dub-title">' + window.escapeHtml(title) + '</h3>' +
-                  (description ? '<p class="dub-desc">' + window.escapeHtml(description) + '</p>' : '') +
-                  '<div class="dub-meta-grid">' +
-                    '<div class="dub-meta-item"><span class="label">Bölüm</span><span class="value">' + window.escapeHtml(episode) + '</span></div>' +
-                    '<div class="dub-meta-item"><span class="label">Kalite</span><span class="value">' + window.escapeHtml(quality) + '</span></div>' +
-                    '<div class="dub-meta-item"><span class="label">Tarih</span><span class="value">' + window.escapeHtml(date) + '</span></div>' +
-                    '<div class="dub-meta-item"><span class="label">Seslendirme</span><span class="value">' + window.escapeHtml(team) + '</span></div>' +
+              '<article class="episode-accordion glass-card ' + (isEpOpen ? 'is-open' : '') + '" data-anime="' + aIdx + '" data-season="' + sIdx + '" data-episode="' + epIdx + '">' +
+                '<button type="button" class="episode-header" onclick="window.toggleDubEpisode(' + aIdx + ', ' + sIdx + ', ' + epIdx + ')">' +
+                  '<div class="episode-header-left">' +
+                    (cover ? '<img class="episode-thumb" src="' + cover + '" alt="' + window.escapeHtml(title) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+                    '<div class="episode-title-group">' +
+                      '<div class="episode-top-meta">' +
+                        '<span class="ep-code-badge">' + window.escapeHtml(episodeCode) + '</span>' +
+                        '<span class="ep-sites-count"><i class="fa-solid fa-tv"></i> ' + sites.length + ' Platform</span>' +
+                      '</div>' +
+                      '<h3 class="episode-title">' + window.escapeHtml(title) + '</h3>' +
+                    '</div>' +
                   '</div>' +
-                  (validUrl
-                    ? '<a class="btn btn-primary dub-watch-btn" href="' + url + '" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-play"></i> İZLE</a>'
-                    : '<span class="btn btn-ghost dub-watch-btn" aria-disabled="true">Bağlantı yakında</span>') +
+                  '<div class="episode-header-right">' +
+                    '<span class="episode-chevron"><i class="fa-solid fa-chevron-down"></i></span>' +
+                  '</div>' +
+                '</button>' +
+                '<div class="episode-content">' +
+                  '<div class="episode-content-inner">' +
+                    (description ? '<p class="episode-desc">' + window.escapeHtml(description) + '</p>' : '') +
+                    '<div class="sites-section">' +
+                      '<div class="sites-section-title"><i class="fa-solid fa-circle-play"></i> İzlemek İstediğiniz Platformu Seçin</div>' +
+                      '<div class="sites-grid">' +
+                        sitesHtml +
+                      '</div>' +
+                    '</div>' +
+                  '</div>' +
                 '</div>' +
               '</article>'
             );
@@ -189,7 +257,7 @@
         }
 
         return (
-          '<div class="season-accordion ' + (isOpen ? 'is-open' : '') + '" data-anime="' + aIdx + '" data-season="' + sIdx + '">' +
+          '<div class="season-accordion ' + (isSeasonOpen ? 'is-open' : '') + '" data-anime="' + aIdx + '" data-season="' + sIdx + '">' +
             '<button type="button" class="season-header glass-card" onclick="window.toggleDubSeason(' + aIdx + ', ' + sIdx + ')">' +
               '<div class="season-title-group">' +
                 '<span class="season-icon"><i class="fa-solid fa-layer-group"></i></span>' +
@@ -201,7 +269,7 @@
               '</div>' +
             '</button>' +
             '<div class="season-content">' +
-              '<div class="season-content-inner dub-grid">' +
+              '<div class="season-content-inner episodes-list">' +
                 episodesListHtml +
               '</div>' +
             '</div>' +
@@ -229,9 +297,13 @@
     }
   }
 
-  // Global toggle fonksiyonu
+  // Global toggle fonksiyonları
   window.toggleDubSeason = function (animeIdx, seasonIdx) {
     toggleSeason(animeIdx, seasonIdx);
+  };
+
+  window.toggleDubEpisode = function (animeIdx, seasonIdx, epIdx) {
+    toggleEpisode(animeIdx, seasonIdx, epIdx);
   };
 
   // Arama dinleyicisi
