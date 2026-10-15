@@ -41,6 +41,14 @@
                   date: "14.08.2026",
                   team: "KoneHub Dublaj"
                 },
+                    {
+                  siteName: "RotaAnime",
+                  siteLogo: "https://rotaani.me/_next/image?url=%2Flogo-rota.webp&w=96&q=75",
+                  url: "https://rotaani.me/izle/high-school-dxd/1",
+                  quality: "1080p Türkçe Dublaj",
+                  date: "15.10.2026",
+                  team: "KoneHub Dublaj"
+                },
                 {
                   siteName: "Animim",
                   siteLogo: "https://play-lh.googleusercontent.com/Ph0HtI57-oDxq897RYMu1X7jzlqBktAAFTdOA3ouRimYf2QAobiaILdV3VtJVAr53plWJ31669De-2kRICuEfw=s0-br30",
