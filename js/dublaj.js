@@ -33,6 +33,14 @@
                   date: "25.07.2026",
                   team: "KoneHub Dublaj"
                 },
+                   {
+                  siteName: "Nimora Watch",
+                  siteLogo: "",
+                  url: "https://nimora.watch/title/tt2230051",
+                  quality: "1080p Türkçe Dublaj",
+                  date: "08.10.2026",
+                  team: "KoneHub Dublaj"
+                },
                 {
                   siteName: "AniHub",
                   siteLogo: "https://anihub.com.tr/icon.png",
